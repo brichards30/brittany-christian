@@ -11,6 +11,11 @@ public class ContactsManagerApp {
 
 
     public static void main(String[] args) throws IOException {
+        Data.setUpDataFile();
+        System.out.println(Contact.displayMainMenu());
+        Contact.promptUserForChoice();
+//        Data.appendToFile("Brittany");
+
 
 
     }
