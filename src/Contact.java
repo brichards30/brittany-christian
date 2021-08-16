@@ -1,4 +1,6 @@
+import javax.sound.midi.Soundbank;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Contact {
@@ -7,7 +9,7 @@ public class Contact {
     public static String addFirstName(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the contact's first name: ");
-        return scan.nextLine();
+        return scan.nextLine().trim();
     }
 
 
@@ -15,7 +17,7 @@ public class Contact {
     public static String addLastName(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter the contact's last name: ");
-        return scan.nextLine();
+        return scan.nextLine().trim();
     }
 
     //add phone number, use recursion if not entered properly
@@ -57,32 +59,21 @@ public class Contact {
                 Data.viewAllContacts();
                 break;
             case 2: //Add a new contact
-                addFirstName();
-                addLastName();
-                addPhoneNumber();
+                String newContact =
+                Contact.addFirstName() + " " +  Contact.addLastName() + " " + Contact.addPhoneNumber();
+                Data.appendToContacts(newContact);
                 break;
-//            case 2: //VIEW ALL ANIMATED MOVIES
-//                System.out.println("\n");
-//                viewMoviesByCategory("animated");
-//                System.out.println("\n");
-//                break;
-//
-//            case 3: //VIEW ALL DRAMA MOVIES
-//                System.out.println("\n");
-//                viewMoviesByCategory("drama");
-//                System.out.println("\n");
-//                break;
-//            case 4: //VIEW ALL HORROR MOVIES
-//                System.out.println("\n");
-//                viewMoviesByCategory("horror");
-//                System.out.println("\n");
-//                break;
-//
-//            case 5: //VIEW ALL SCI-FI MOVIES
-//                System.out.println("\n");
-//                viewMoviesByCategory("scifi");
-//                System.out.println("\n");
-//                break;
+            case 3: //Search a contact by name
+                System.out.println("\nEnter contact name: ");
+                Data.searchForContact();
+                System.out.println("\n");
+                break;
+
+          case 4: //Delete an existing contact2
+              System.out.println("Which contact would you like to delete? ");
+              Data.removeContact();
+              break;
+
         }
         return continueApp;
     }

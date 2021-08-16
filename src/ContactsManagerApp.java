@@ -10,13 +10,19 @@ public class ContactsManagerApp {
 
 
 
+
+
     public static void main(String[] args) throws IOException {
+        boolean running = true;
+
+        while (running) {
+            System.out.println(Contact.displayMainMenu());
+
+            int userChoice = Contact.promptUserForChoice();
+            running = Contact.executeUserChoice(userChoice);
+        }
+
         Data.setUpDataFile();
-        System.out.println(Contact.displayMainMenu());
-        Contact.promptUserForChoice();
-//        Data.appendToFile("Brittany");
-
-
 
     }
 }
