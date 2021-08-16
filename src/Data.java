@@ -3,10 +3,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Data {
     static String directory = "data";
@@ -45,7 +42,6 @@ public class Data {
         System.out.println("Name | Phone number");
         System.out.println("---------------");
         for (String contact : showAllContacts) {
-
             System.out.println(contact);
         }
     }
@@ -70,14 +66,10 @@ public class Data {
         for (String contact : showAllContacts) {
             if (!contact.toLowerCase().contains(userChoice.toLowerCase())) {
                 newContactList.add(contact);
-                System.out.println(newContactList);
             }
-
-//            newContactList.add(contact);
         }
             Files.write(Paths.get(directory, filename), newContactList);
         }
-
     }
 
 

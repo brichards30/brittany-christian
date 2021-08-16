@@ -1,2 +1,5 @@
-Tommy Vercetti 305-555-5555
-Lance Vance 305-555-5432
+Niko Bellic | 212-555-5555
+Tommy Vercetti | 305-555-5555
+Carl Johnson | 310-555-5555
+Franklin Clinton | 212-555-5555
+Trevor Phillips | 313-555-5555

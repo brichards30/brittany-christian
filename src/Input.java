@@ -28,33 +28,47 @@ public class Input {
         }
 
         public int getInt(int min, int max) {
-            //System.out.println("See if your number is within the range: ");
-            int userResponse = scanner.nextInt();
-            if (userResponse >= min && userResponse <= max) {
-                //System.out.println("Yay! " + userResponse + " is within the range!");
-                return userResponse;
-            } else {
-                //System.out.println("Dust your self off and try again!");
-                return getInt(min, max);
-            }
-        }
-//    public int getInt() {
-//        //System.out.println("Enter a whole number: ");
-//        int usersInteger = scanner.nextInt();
-//        return usersInteger;
-//    }
-
-        public int getInt(){
-            System.out.println("Enter a number: ");
-            String s = getString();
+            int userResponse;
 
             try {
-                return Integer.valueOf(s);
-            }catch(NumberFormatException e) {
-                System.out.println("Not a number. Try again!");
-                return getInt();
+                userResponse = Integer.valueOf(this.getString());
+            } catch (NumberFormatException e){
+                System.out.println("That is not a valid selection. Try again.");
+                return getInt(min, max);
             }
-        }
+
+            if (userResponse < min || userResponse > max) {
+                System.out.println("That is not a valid selection. Try again.");
+                return getInt(min, max);
+            } else {
+                return userResponse;
+            }
+//
+//            int userResponse = scanner.nextInt();
+//            if (userResponse >= min && userResponse <= max) {
+//                //System.out.println("Yay! " + userResponse + " is within the range!");
+//                return userResponse;
+//            } else {
+//                //System.out.println("Dust your self off and try again!");
+//                return getInt(min, max);
+//            }
+       }
+    public int getInt() {
+        //System.out.println("Enter a whole number: ");
+        int usersInteger = scanner.nextInt();
+        return usersInteger;
+    }
+
+//        public int getInt(){
+//            System.out.println("Enter a number: ");
+//
+//            try {
+//                return Integer.valueOf(this.getString());
+//            }catch(NumberFormatException e) {
+//                System.out.println("Not a number. Try again!");
+//                return getInt();
+//            }
+//        }
 
         public double getDouble(double min, double max) {
             System.out.println("See if your number with a decimal is within range: ");
@@ -75,10 +89,9 @@ public class Input {
 
         public double getDouble(){
             System.out.println("Enter a number: ");
-            String s = getString();
 
             try {
-                return Double.valueOf(s);
+                return Double.valueOf(this.getString());
             }catch(NumberFormatException e) {
                 System.out.println("Not a number. Try again!");
                 return getDouble();

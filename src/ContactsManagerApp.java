@@ -8,10 +8,6 @@ import java.util.List;
 
 public class ContactsManagerApp {
 
-
-
-
-
     public static void main(String[] args) throws IOException {
         boolean running = true;
 

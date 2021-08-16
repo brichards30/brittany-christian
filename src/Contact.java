@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import javax.sound.midi.Soundbank;
 import java.io.IOException;
 import java.sql.SQLOutput;
@@ -16,7 +18,7 @@ public class Contact {
     // add last name
     public static String addLastName(){
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter the contact's last name: ");
+        System.out.println("Enter the contact's last name if applicable: ");
         return scan.nextLine().trim();
     }
 
@@ -31,9 +33,7 @@ public class Contact {
             System.out.println("Please try again");
             return addPhoneNumber();
         }
-
     }
-
     public static String displayMainMenu(){
         String options = "1. View contacts.\n" +
                 "2. Add a new contact.\n" +
@@ -59,8 +59,10 @@ public class Contact {
                 Data.viewAllContacts();
                 break;
             case 2: //Add a new contact
-                String newContact =
-                Contact.addFirstName() + " " +  Contact.addLastName() + " " + Contact.addPhoneNumber();
+                String newContactName =
+                Contact.addFirstName() + " " +  Contact.addLastName();
+                String newContactNumber = Contact.addPhoneNumber();
+                String newContact = newContactName + " | " + newContactNumber;
                 Data.appendToContacts(newContact);
                 break;
             case 3: //Search a contact by name
@@ -69,11 +71,19 @@ public class Contact {
                 System.out.println("\n");
                 break;
 
-          case 4: //Delete an existing contact2
+          case 4: //Delete an existing contact
               System.out.println("Which contact would you like to delete? ");
               Data.removeContact();
               break;
 
+            case 5: //Exit
+                System.out.println("Goodbye!");
+                continueApp = false;
+                break;
+
+            default:
+                System.out.println("That is not a valid selection");
+                break;
         }
         return continueApp;
     }
