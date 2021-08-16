@@ -56,7 +56,7 @@ public class Data {
 
         for (String contact : showAllContacts) {
 
-            if (contact.contains(userResponse.toLowerCase())) {
+            if (contact.toLowerCase().contains(userResponse.toLowerCase())) {
                 System.out.println(contact);
             }
         }
@@ -68,12 +68,12 @@ public class Data {
         List<String> newContactList = new ArrayList<>();
 
         for (String contact : showAllContacts) {
-            if (!contact.contains(userChoice.toLowerCase())) {
+            if (!contact.toLowerCase().contains(userChoice.toLowerCase())) {
                 newContactList.add(contact);
-            }else if (contact.contains(userChoice.toLowerCase())){
-                newContactList.add("Empty");
+                System.out.println(newContactList);
             }
-            newContactList.add(contact);
+
+//            newContactList.add(contact);
         }
             Files.write(Paths.get(directory, filename), newContactList);
         }
